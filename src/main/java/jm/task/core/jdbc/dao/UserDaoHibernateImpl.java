@@ -46,7 +46,7 @@ public class UserDaoHibernateImpl implements UserDao {
         Transaction transaction = null;
         try (Session session = getSessionFactory().openSession()){
             transaction = session.beginTransaction();
-            sql = "DROP TABLE USERS";
+            sql = "DROP TABLE IF EXISTS users;";
 
             session.createNativeQuery(sql).executeUpdate();
             transaction.commit();
